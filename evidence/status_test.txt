@@ -1,0 +1,25 @@
+== (+) Pekerjaan normal (sleep 1) ==
+$ scripts/status_job.sh sleep 1
+2026-11-18 09:36:35 | job-1794994595-7009 | PID=- | STATUS=MENUNGGU | EXIT=- | CMD=sleep 1
+2026-11-18 09:36:35 | job-1794994595-7009 | PID=7017 | STATUS=BERJALAN | EXIT=- | CMD=sleep 1
+2026-11-18 09:36:36 | job-1794994595-7009 | PID=7017 | STATUS=BERHASIL | EXIT=0 | CMD=sleep 1
+exit status: 0
+
+== (-) Pekerjaan error (exit 3) ==
+$ scripts/status_job.sh bash -c 'exit 3'
+2026-11-18 09:36:36 | job-1794994596-7028 | PID=- | STATUS=MENUNGGU | EXIT=- | CMD=bash -c exit 3
+2026-11-18 09:36:36 | job-1794994596-7028 | PID=7037 | STATUS=BERJALAN | EXIT=- | CMD=bash -c exit 3
+2026-11-18 09:36:36 | job-1794994596-7028 | PID=7037 | STATUS=GAGAL | EXIT=3 | CMD=bash -c exit 3
+exit status: 3
+
+== (-) Tanpa parameter ==
+$ scripts/status_job.sh
+exit status: 2
+
+== Isi log (logs/status_job.log) ==
+2026-11-18 09:36:35 | job-1794994595-7009 | PID=- | STATUS=MENUNGGU | EXIT=- | CMD=sleep 1
+2026-11-18 09:36:35 | job-1794994595-7009 | PID=7017 | STATUS=BERJALAN | EXIT=- | CMD=sleep 1
+2026-11-18 09:36:36 | job-1794994595-7009 | PID=7017 | STATUS=BERHASIL | EXIT=0 | CMD=sleep 1
+2026-11-18 09:36:36 | job-1794994596-7028 | PID=- | STATUS=MENUNGGU | EXIT=- | CMD=bash -c exit 3
+2026-11-18 09:36:36 | job-1794994596-7028 | PID=7037 | STATUS=BERJALAN | EXIT=- | CMD=bash -c exit 3
+2026-11-18 09:36:36 | job-1794994596-7028 | PID=7037 | STATUS=GAGAL | EXIT=3 | CMD=bash -c exit 3
